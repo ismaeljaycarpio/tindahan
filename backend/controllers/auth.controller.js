@@ -51,10 +51,10 @@ export const signup = async (req, res) => {
 
     const user = await User.create({ name, email, password });
 
-    // Authenticate user
+    // Generate tokens for user id
     const { accessToken, refreshToken } = generateTokens(user._id);
 
-    // Store token to Redis
+    // Store tokens in Redis
     await storeRefreshToken(user._id, refreshToken);
 
     // Set Cookie in the browser

@@ -19,6 +19,7 @@ dotenv.config(); // read the content of .ENV file
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// root of application
 const __dirname = path.resolve();
 
 app.use(express.json({ limit: "10mb" }));
@@ -31,8 +32,8 @@ app.use("/api/coupons", couponRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
-console.log(await dns.getServers());
-dns.setServers(["1.1.1.1"]);
+//console.log(await dns.getServers());
+//dns.setServers(["1.1.1.1"]);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));

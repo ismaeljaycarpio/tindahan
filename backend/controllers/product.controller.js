@@ -32,7 +32,7 @@ export const getFeaturedProducts = async (req, res) => {
 
     // store in Redis for future quicker access
     // await redis.set("featured_products", JSON.stringify(featuredProducts));
-    res.json(featuredProducts);
+    res.json({ featuredProducts });
   } catch (error) {
     console.log("Error in getFeaturedProducts controller", error.message);
     res.status(500).json({ message: "Server error", error: error.message });
