@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from "lucide-react";
 import { motion } from "framer-motion";
 import { useUserStore } from "../stores/useUserStore";
@@ -12,11 +12,14 @@ const SingUpPage = () => {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
+
   const { signup, loading } = useUserStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(formData);
+    navigate("/login", { replace: true });
   };
 
   return (

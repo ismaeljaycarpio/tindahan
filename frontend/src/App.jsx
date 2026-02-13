@@ -18,7 +18,7 @@ import { useUserStore } from "./stores/useUserStore";
 import { useCartStore } from "./stores/useCartStore";
 
 function App() {
-  const { user, checkAuth, checkingAuth } = useUserStore();
+  const { user, checkAuth, checkingAuth, isRegister } = useUserStore();
   const { getCartItems } = useCartStore();
 
   // AUTH
@@ -51,8 +51,9 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route
             path="/signup"
-            element={!user ? <SignUpPage /> : <Navigate to="/" />}
+            element={!user ? <SignUpPage /> : <Navigate to="/login" />}
           ></Route>
+
           <Route
             path="/login"
             element={!user ? <LoginPage /> : <Navigate to="/" />}

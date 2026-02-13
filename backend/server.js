@@ -14,7 +14,7 @@ import { connectDB } from "./lib/db.js";
 
 import dns from "node:dns/promises";
 
-dotenv.config();
+dotenv.config(); // read the content of .ENV file
 
 const app = express();
 const PORT = process.env.PORT || 5000;
